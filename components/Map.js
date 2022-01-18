@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import getCenter from 'geolib/es/getCenter';
+import { StarIcon } from '@heroicons/react/solid';
 
 function Map({ searchResults }) {
     const [selectedLocation, setSelectedLocation] = useState({});
@@ -53,7 +54,18 @@ function Map({ searchResults }) {
                             latitude={result.lat}
                             longitude={result.long}
                         >
-                            {result.title}
+                            <div className='w-80'>
+                                {result.title}
+                                <br />
+                                <br />
+                                {result.description}
+                                <br />
+                                <br />
+                                <div className='flex items-center'>
+                                    <StarIcon className='h-5 text-red-400' />{' '}
+                                    {result.star}
+                                </div>
+                            </div>
                         </Popup>
                     ) : (
                         false
